@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\TaskCollection;
 use App\Http\Resources\TaskResource;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreTaskRequest;
+use Illuminate\Http\Request;;
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -17,6 +18,13 @@ class TaskController extends Controller
 
 
     function show(Request $request, Task $task) {
+        return new TaskResource($task);
+    }
+
+
+    function store(StoreTaskRequest $request) {        
+        $validated = $request->validated();
+        $task = Task::create($validated);
         return new TaskResource($task);
     }
 
