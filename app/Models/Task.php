@@ -18,7 +18,7 @@ class Task extends Model {
     ];
 
     protected $fillable = [
-        'title'
+        'title', 'is_done'
     ];
 
 }
