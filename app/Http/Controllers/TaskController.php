@@ -12,7 +12,7 @@ use App\Models\Task;
 class TaskController extends Controller {
 
     function index() {
-        return new TaskCollection(Task::all());
+        return new TaskCollection(Task::paginate(20));
     }
 
     function show(Request $request, Task $task) {
