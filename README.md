@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=laravel" alt="Skillicons" />
+</p>
+
 # Laravel API Study Project
 
 ## Description
