@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Auth;
 
 class Task extends Model {
 
@@ -20,6 +22,12 @@ class Task extends Model {
 
     function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    protected static function booted(): void {
+        static::addGlobalScope('user', function(Builder $builder) {
+            $builder->where('user_id', Auth::id());
+        });
     }
 
 }
